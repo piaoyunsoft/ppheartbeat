@@ -1,8 +1,9 @@
 // Copyright 2019 PiaoYun/P.Y.G. All rights reserved.
 // Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file.
 // https://www.chinapyg.com
 
-package client
+package ppheartbeat
 
 import (
 	"log"
