@@ -17,11 +17,12 @@ type PPHeartbeat struct {
 }
 
 func NewHeartbeat(d time.Duration, cb func()) *PPHeartbeat {
-	return &PPHeartbeat{d, cb, make(chan struct{}, 1)}
+	return &PPHeartbeat{d, cb, nil}
 }
 
 func (h *PPHeartbeat) Start() {
-	log.Println("=====call Start()=====")
+	//log.Println("=====call Start()=====")
+	h.done = make(chan struct{}, 1)
 	go func() {
 		ticker := time.NewTicker(h.duration)
 		defer ticker.Stop()
@@ -37,12 +38,8 @@ func (h *PPHeartbeat) Start() {
 }
 
 func (h *PPHeartbeat) Stop() {
-	log.Println("=====call pingStop()=====")
+	//log.Println("=====call Stop()=====")
 	if h.done != nil {
 		close(h.done)
 	}
-}
-
-func init() {
-	log.Println("=====go PPHeartbeat by PiaoYun/P.Y.G=====")
 }
