@@ -6,7 +6,6 @@
 package ppheartbeat
 
 import (
-	"log"
 	"time"
 )
 
